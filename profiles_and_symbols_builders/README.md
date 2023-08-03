@@ -1,4 +1,4 @@
-# Volatility profiles and symbols automatic building 
+# Volatility profiles and symbols automated generation 
 
 ## About this project
 
