@@ -1,0 +1,11 @@
+FROM alpine:3.17
+
+RUN apk update
+
+RUN apk add python3 python3-dev py-pip snappy-dev make gcc capstone musl-dev linux-headers openssl-dev libusb-dev
+
+RUN wget https://github.com/volatilityfoundation/volatility3/raw/develop/requirements.txt -P /tmp/
+
+RUN pip3 install wheel
+
+RUN pip3 install -r /tmp/requirements.txt
