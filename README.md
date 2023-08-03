@@ -6,7 +6,25 @@ This repository contains scripts related to the volatility framework.
 
 ## Content
 
-- volatility_ez_install : Install volatility on your system easily with Docker and get provided with command aliases to fasten the experience !
-- Fedora profile and symbols automatic generation
+Get full notices in the dedicated subdirectories !
 
-Get full notices in the dedicated subdirectories readme !
+### vol_ez_install 
+
+Install volatility on your system easily with Docker and get provided with command aliases to fasten the experience !
+
+
+### profiles_and_symbols_builders
+
+Volatility profiles and symbols automatic generation for :
+
+![](https://img.shields.io/badge/Fedora/[amd64,i386]-All%20versions-blue)
+
+---
+
+## Related work :
+
+- 6600+ Volatility2 profiles for Ubuntu and Debian  : https://github.com/Abyss-W4tcher/volatility2-profiles
+
+- Volatility3 symbols : Soon
+
+### Status : WiP !
