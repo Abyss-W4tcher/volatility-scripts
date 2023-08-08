@@ -9,11 +9,11 @@ COPY --from=dwarf2json_builder /go/dwarf2json/dwarf2json /usr/bin/dwarf2json
 RUN dnf update -y
 RUN dnf install -y dracut linux-firmware perl wget gcc git autoconf automake libtool make zip elfutils-libelf-devel nano koji
 WORKDIR /tmp
-RUN git clone https://github.com/davea42/libdwarf-code.git &&
-    cd libdwarf-code/ &&
-    ACLOCAL_PATH=/usr/share/aclocal sh autogen.sh &&
-    mkdir build &&
-    cd build &&
-    ../configure --disable-dependency-tracking &&
-    make install
+RUN git clone https://github.com/davea42/libdwarf-code.git \
+ && cd libdwarf-code/ \
+ && ACLOCAL_PATH=/usr/share/aclocal sh autogen.sh \
+ && mkdir build \
+ && cd build \
+ && ../configure --disable-dependency-tracking \
+ && make install
 RUN git clone https://github.com/volatilityfoundation/volatility

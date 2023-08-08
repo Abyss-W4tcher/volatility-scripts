@@ -7,10 +7,15 @@ import lzma
 from pathlib import Path
 
 
+def get_project_base_path():
+    return Path(__file__).parent  # Arbitrary position
+
+
 @dataclass
 class Container:
     image_name: str
     container_name: str
+    dockerfile_path: Path
 
     def build_image(self):
         check = subprocess.run(
@@ -22,8 +27,10 @@ class Container:
         if check.returncode == 0:
             return
 
-        cmd = f"docker build -t {self.image_name} -f Dockerfile-fedora .".split()
-        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        cmd = f"cd {self.dockerfile_path.parent} && docker build -t {self.image_name} -f {self.dockerfile_path} ."
+        p = subprocess.Popen(
+            cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True
+        )
 
         for line in iter(p.stdout.readline, b""):
             print(">>> " + line.decode().rstrip())
@@ -90,7 +97,7 @@ class VolBuild:
             raise Exception("No system.map found")
 
         vol2_build = self.container_obj.docker_exec(
-            f"cd {self.volatility_builder_path} && make clean ; make ; ls module.dwarf && zip /tmp/{self.profile_name}.zip module.dwarf {system_map}"
+            f"cd {self.volatility_builder_path} && make clean ; make ; ls module.dwarf && zip /tmp/{self.profile_name} module.dwarf {system_map}"
         )
 
         if vol2_build.returncode != 0:
@@ -105,10 +112,12 @@ class VolBuild:
 
         logging.info(f"[{self.kernel_full}][vol2] Profile generated !")
 
-    def vol3_build_isf(self):
+    def vol3_build_isf(self, vmlinux_path_prefix: str):
         logging.info(f"[{self.kernel_full}][vol3] Building ISF...")
         vmlinux = (
-            self.container_obj.docker_exec(f"find / | grep -m1 '/usr/lib/.\+/vmlinux'")
+            self.container_obj.docker_exec(
+                f"find / | grep -m1 '{vmlinux_path_prefix}.\+/vmlinux'"
+            )
             .stdout.decode()
             .strip()
         )

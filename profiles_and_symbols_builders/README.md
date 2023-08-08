@@ -17,7 +17,6 @@ Generation example :
 
 ```sh
 mkdir generated_files
-python3 Fedora/automate_fedora.py --kernel '2.6.34-18.fc14.i686' --output-dir generated_files
 python3 Fedora/automate_fedora.py --kernel '4.2.6-200.fc22.x86_64' --output-dir generated_files
 python3 Fedora/automate_fedora.py --kernel '6.2.9-200.fc37.x86_64' --output-dir generated_files
 ```

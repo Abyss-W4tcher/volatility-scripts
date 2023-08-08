@@ -9,7 +9,11 @@ from pathlib import Path
 import click
 import re
 import requests
-from generators.base import Container, VolBuild
+from profiles_and_symbols_builders.base import (
+    Container,
+    VolBuild,
+    get_project_base_path,
+)
 
 
 # CTRL-C instant killer
@@ -38,7 +42,11 @@ class Generator:
         self.image_name = "fedora-volatility"
         self.volatility_builder_path = "/tmp/volatility/tools/linux"
         self.container_name = f"fedora-volatility-{self.kernel}"
-        self.container_obj = Container(self.image_name, self.container_name)
+        self.container_obj = Container(
+            self.image_name,
+            self.container_name,
+            get_project_base_path() / "Fedora/Dockerfile-fedora",
+        )
         self.vol_obj = VolBuild(
             self.destination_path,
             self.kernel,
@@ -178,7 +186,7 @@ def main(kernel, output_dir: Path):
             gen_obj.check_rpms("vol3")
             gen_obj.download_rpms("vol3")
             gen_obj.install_rpms("vol3")
-            gen_obj.vol_obj.vol3_build_isf()
+            gen_obj.vol_obj.vol3_build_isf("/usr/lib/")
         except Exception as e:
             logging.error(f"[{gen_obj.kernel}] Vol3 build failed : {e}")
 
