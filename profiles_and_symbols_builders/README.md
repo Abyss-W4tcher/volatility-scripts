@@ -13,6 +13,12 @@ A base file including functions that should be common to any distribution is ava
 
 It will output one Volatility2 profile and one Volatility3 symbols file (ISF).
 
+## Requirements
+
+- `python3`
+- `docker`
+- `docker` "rootless" (https://docs.docker.com/engine/security/rootless/) OR run the scripts as root
+
 ## Fedora generation 
 
 Generation example :
