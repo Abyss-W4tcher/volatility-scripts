@@ -8,7 +8,7 @@ One container for each volatility version will be setup. The volatility code wil
 Requirements :
 
 - `docker` 
-- docker "rootless" (https://docs.docker.com/engine/security/rootless/) : no need to run docker as root here*
+- `docker` "rootless" (https://docs.docker.com/engine/security/rootless/) : no need to run docker as root here*
 
 Usage : `bash vol_ez_install.sh`
 
