@@ -95,7 +95,11 @@ class VolBuild:
         )
         if system_map == "":
             raise Exception("No system.map found")
+        
+        # Prevent missing gcc header, for old kernels
+        self.container_obj.docker_exec('kern_dir=$(dirname $(find / | grep -m 1 "include/linux/compiler.h")) && ln_src=$(find $kern_dir/compiler-*.h | grep -P "gcc\d" | sort -rn | head -n 1) && ln -s "$ln_src" "$kern_dir/compiler-gcc$(gcc -dumpversion).h"')
 
+        
         vol2_build = self.container_obj.docker_exec(
             f"cd {self.volatility_builder_path} && make clean ; make ; ls module.dwarf && zip /tmp/{self.profile_name} module.dwarf {system_map}"
         )
