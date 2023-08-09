@@ -2,7 +2,7 @@
 
 ## About the project 
 
-This repository contains a variety scripts related to the volatility framework.
+This repository contains a variety of scripts related to the Volatility framework.
 
 ## Content
 
