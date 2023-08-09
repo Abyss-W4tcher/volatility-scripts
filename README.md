@@ -23,7 +23,7 @@ Volatility profiles and symbols automatic generation for :
 
 ---
 
-## Related work :
+## Related work
 
 - Extended list of pre-generated Volatility2 profiles : https://github.com/Abyss-W4tcher/volatility2-profiles
 - Extended list of pre-generated Volatility3 symbols : https://github.com/Abyss-W4tcher/volatility3-symbols
