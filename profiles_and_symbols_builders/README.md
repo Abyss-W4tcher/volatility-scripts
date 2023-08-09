@@ -11,6 +11,8 @@ Every distribution does not provide the same access to the needed kernel files. 
 
 A base file including functions that should be common to any distribution is available. If you want to add your own scripts, please check out the already existing ones and import the classes from "base.py" in your file.
 
+It will output one Volatility2 profile and one Volatility3 symbols file (ISF).
+
 ## Fedora generation 
 
 Generation example :
@@ -41,4 +43,3 @@ python3 RockyLinux/automate_rockylinux.py --kernel '4.18.0-477.10.1.el8_8.x86_64
 python3 RockyLinux/automate_rockylinux.py --kernel '5.14.0-284.25.1.el9_2.x86_64' --output-dir generated_files
 ```
 
-It will output one Volatility2 profile and one Volatility3 symbols file (ISF).
