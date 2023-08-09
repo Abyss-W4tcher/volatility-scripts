@@ -10,7 +10,7 @@ Get full notices in the dedicated subdirectories !
 
 ### vol_ez_install 
 
-Install volatility on your system easily with Docker and get provided with command aliases to fasten the experience !
+Install Volatility on your system effortlessly using Docker, and benefit from command aliases that streamline the experience !
 
 
 ### profiles_and_symbols_builders
