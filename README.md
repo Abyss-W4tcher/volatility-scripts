@@ -18,6 +18,8 @@ Install volatility on your system easily with Docker and get provided with comma
 Volatility profiles and symbols automatic generation for :
 
 ![](https://img.shields.io/badge/Fedora/[amd64,i386]-All%20versions-blue)
+![](https://img.shields.io/badge/AlmaLinux/[amd64]-All%20versions-blue) : The script may support other architectures but not for all versions
+![](https://img.shields.io/badge/RockyLinux/[amd64]-All%20versions-blue) : The script may support other architectures but not for all versions
 
 ---
 

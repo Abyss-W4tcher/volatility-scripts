@@ -21,4 +21,24 @@ python3 Fedora/automate_fedora.py --kernel '4.2.6-200.fc22.x86_64' --output-dir 
 python3 Fedora/automate_fedora.py --kernel '6.2.9-200.fc37.x86_64' --output-dir generated_files
 ```
 
+## AlmaLinux generation 
+
+Generation example :
+
+```sh
+mkdir generated_files
+python3 AlmaLinux/automate_almalinux.py --kernel '4.18.0-477.10.1.el8_8.x86_64' --output-dir generated_files
+python3 AlmaLinux/automate_almalinux.py --kernel '5.14.0-284.18.1.el9_2.x86_64' --output-dir generated_files
+```
+
+## RockyLinux generation 
+
+Generation example :
+
+```sh
+mkdir generated_files
+python3 RockyLinux/automate_rockylinux.py --kernel '4.18.0-477.10.1.el8_8.x86_64' --output-dir generated_files
+python3 RockyLinux/automate_rockylinux.py --kernel '5.14.0-284.25.1.el9_2.x86_64' --output-dir generated_files
+```
+
 It will output one Volatility2 profile and one Volatility3 symbols file (ISF).
