@@ -25,8 +25,5 @@ Volatility profiles and symbols automatic generation for :
 
 ## Related work :
 
-- 6600+ Volatility2 profiles for Ubuntu and Debian  : https://github.com/Abyss-W4tcher/volatility2-profiles
-
-- Volatility3 symbols : Soon
-
-### Status : WiP !
+- Extended list of pre-generated Volatility2 profiles : https://github.com/Abyss-W4tcher/volatility2-profiles
+- Extended list of pre-generated Volatility3 symbols : https://github.com/Abyss-W4tcher/volatility3-symbols
