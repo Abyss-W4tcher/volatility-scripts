@@ -15,6 +15,7 @@ from profiles_and_symbols_builders.base import (
     get_project_base_path,
 )
 
+
 # CTRL-C instant killer
 def handler(signum, frame):
     os.kill(os.getpid(), signal.SIGKILL)
@@ -34,7 +35,7 @@ class Generator:
 
     def __post_init__(self):
         self.version = self.kernel.split(".el")[0]
-        self.release = self.kernel.split("el")[1].split(".")[0].replace("_",".")
+        self.release = self.kernel.split("el")[1].split(".")[0].replace("_", ".")
         self.arch = self.kernel.split(".")[-1]
         self.profile_name = f"RockyLinux{self.kernel}.zip"
         self.isf_name = f"RockyLinux{self.kernel}.json.xz"
@@ -59,7 +60,7 @@ class Generator:
         self.base_repo_url_vol = [
             f"https://download.rockylinux.org/pub/rocky/{self.release}/BaseOS/{self.arch}/os/Packages/k/",
             f"https://download.rockylinux.org/pub/rocky/{self.release}/Devel/{self.arch}/os/Packages/k/",
-            f"https://download.rockylinux.org/pub/rocky/{self.release}/devel/{self.arch}/os/Packages/k/",  
+            f"https://download.rockylinux.org/pub/rocky/{self.release}/devel/{self.arch}/os/Packages/k/",
             f"https://download.rockylinux.org/pub/rocky/{self.release}/BaseOS/{self.arch}/debug/tree/Packages/k/",
         ]
 
@@ -100,18 +101,20 @@ class Generator:
             package_name, exit_on_error = package
             print(package_name)
             package_url = None
-            
+
             for base_repo_url in self.base_repo_url_vol:
                 try:
                     r = requests.get(base_repo_url).text
-                    package_url = re.findall(f'"({package_name}-{self.kernel}.rpm)"', r)[0]
+                    package_url = re.findall(
+                        f'"({package_name}-{self.kernel}.rpm)"', r
+                    )[0]
                     full_packages.append(
                         (package_url.split("/")[-1], f"{base_repo_url}{package_url}")
                     )
                     break  # Exit the loop if the package is found
                 except Exception as e:
                     continue  # Try the next base_repo_url if the package is not found
-                    
+
             if package_url is None and exit_on_error:
                 raise Exception(
                     f'Error while fetching package url for "{package_name}" : Package not found in any repositories.'
@@ -133,7 +136,7 @@ class Generator:
             raise Exception("Invalid target")
 
         logging.info(f"[{self.kernel}][{target}] Downloading rpms...")
-        
+
         for package in packages:
             package_name, package_url = package
             print(package_name)
@@ -207,6 +210,7 @@ def main(kernel, output_dir: Path):
             gen_obj.vol_obj.vol2_build_profile()
         except Exception as e:
             logging.error(f"[{gen_obj.kernel}] Vol2 build failed : {e}")
+
 
 if __name__ == "__main__":
     main()

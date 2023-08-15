@@ -95,11 +95,12 @@ class VolBuild:
         )
         if system_map == "":
             raise Exception("No system.map found")
-        
-        # Prevent missing gcc header, for old kernels
-        self.container_obj.docker_exec('kern_dir=$(dirname $(find / | grep -m 1 "include/linux/compiler.h")) && ln_src=$(find $kern_dir/compiler-*.h | grep -P "gcc\d" | sort -rn | head -n 1) && ln -s "$ln_src" "$kern_dir/compiler-gcc$(gcc -dumpversion).h"')
 
-        
+        # Prevent missing gcc header, for old kernels
+        self.container_obj.docker_exec(
+            'kern_dir=$(dirname $(find / | grep -m 1 "include/linux/compiler.h")) && ln_src=$(find $kern_dir/compiler-*.h | grep -P "gcc\d" | sort -rn | head -n 1) && ln -s "$ln_src" "$kern_dir/compiler-gcc$(gcc -dumpversion).h"'
+        )
+
         vol2_build = self.container_obj.docker_exec(
             f"cd {self.volatility_builder_path} && make clean ; make ; ls module.dwarf && zip /tmp/{self.profile_name} module.dwarf {system_map}"
         )
@@ -128,18 +129,10 @@ class VolBuild:
         if vmlinux == "":
             raise Exception("No vmlinux file found")
 
-        attempts_limit = 3  # dwarf2json may fail if not enough RAM is available
-        for _ in range(attempts_limit):
-            json_data = self.container_obj.docker_exec(
-                f"dwarf2json linux --elf {vmlinux}"
-            )
-            if json_data.returncode != 0:
-                continue
-            else:
-                break
-        else:
+        json_data = self.container_obj.docker_exec(f"dwarf2json linux --elf {vmlinux}")
+        if json_data.returncode != 0:
             raise Exception(
-                f"Error while installing executing dwarf2json : {json_data.stderr}"
+                f"Error while executing dwarf2json : '{json_data.stderr}'. Check that enough RAM is available on your system : https://github.com/volatilityfoundation/dwarf2json/issues/38."
             )
 
         with open(self.destination_path / self.isf_name, "wb+") as f:

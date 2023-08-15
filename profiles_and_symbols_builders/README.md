@@ -9,9 +9,7 @@ This project provides scripts allowing to generate Volatility2 profiles and Vola
 By using Docker containers instead of virtual machines, we have a better control and flexibility over the process flow. 
 Every distribution does not provide the same access to the needed kernel files. Doing so, and due to the instability and needed customization for some of them, scripts to generate profiles and symbols may not be directly available here. However, you can check the main README of this GitHub repository to access a large panel of already generated files. 
 
-A base file including functions that should be common to any distribution is available. If you want to add your own scripts, please check out the already existing ones and import the classes from "base.py" in your file.
-
-It will output one Volatility2 profile and one Volatility3 symbols file (ISF).
+The scripts will output one Volatility2 profile and one Volatility3 symbols file (ISF).
 
 ## Requirements
 
@@ -49,3 +47,8 @@ python3 RockyLinux/automate_rockylinux.py --kernel '4.18.0-477.10.1.el8_8.x86_64
 python3 RockyLinux/automate_rockylinux.py --kernel '5.14.0-284.25.1.el9_2.x86_64' --output-dir generated_files
 ```
 
+## Contribute 
+
+A base file including functions that should be common to any distribution is available. If you want to add your own scripts, please check out the already existing ones and import the classes from "base.py" in your file.
+
+Code should be formatted with "black".
