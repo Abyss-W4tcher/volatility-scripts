@@ -34,7 +34,7 @@ vol3d -f `wvol dump.raw` windows.pslist
 
 # Translates (without aliases) to :
 docker run --rm -v /:/bind/ vol2_dck python2 /bind/home/user/vol2/volatility2/vol.py -f /bind/home/user/dump.raw --profile [profile_name] pslist
-docker run --rm -v /:/bind/ vol3_dck python3 /bind/home/user/vol3/volatility2/vol.py -f /bind/home/user/dump.raw  windows.pslist
+docker run --rm -v /:/bind/ vol3_dck python3 /bind/home/user/vol3/volatility3/vol.py -f /bind/home/user/dump.raw  windows.pslist
 ```
 
 To reference files from your host inside the container, please use the ``` `wvol [file_you_want_the_container_to_access]` ``` syntax. Doing so, it translates to a path reachable by the container. It's basically a "readlink" command prefixed with the binded volume of the container.
