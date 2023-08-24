@@ -16,9 +16,9 @@ Install Volatility on your system effortlessly using Docker, and benefit from co
 
 Volatility3 symbols automatic generation :
 
-![](https://img.shields.io/badge/Fedora/)  
-![](https://img.shields.io/badge/AlmaLinux/)  
-![](https://img.shields.io/badge/RockyLinux/)
+- Fedora
+- AlmaLinux
+- RockyLinux
 
 ---
 
