@@ -12,7 +12,7 @@ Get full notices in the dedicated subdirectories !
 
 Install Volatility on your system effortlessly using Docker, and benefit from command aliases that streamline the experience !
 
-### symbols_builders
+### symbols_builder
 
 Volatility3 symbols automatic generation :
 
