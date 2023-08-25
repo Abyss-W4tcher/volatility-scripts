@@ -12,14 +12,13 @@ Get full notices in the dedicated subdirectories !
 
 Install Volatility on your system effortlessly using Docker, and benefit from command aliases that streamline the experience !
 
+### symbols_builder
 
-### profiles_and_symbols_builders
+Volatility3 symbols automatic generation :
 
-Volatility profiles and symbols automatic generation for :
-
-![](https://img.shields.io/badge/Fedora/[amd64,i386]-All%20versions-blue)  
-![](https://img.shields.io/badge/AlmaLinux/[amd64]-All%20versions-blue) : Support for other architectures should work but is not guaranteed for some versions.  
-![](https://img.shields.io/badge/RockyLinux/[amd64]-All%20versions-blue) : Support for other architectures should work but is not guaranteed for some versions.
+- Fedora
+- AlmaLinux
+- RockyLinux
 
 ---
 
