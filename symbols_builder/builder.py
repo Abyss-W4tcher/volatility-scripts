@@ -31,7 +31,7 @@ def fedora(kernel: str):
     try:
         main_fedora(kernel)
     except Exception as e:
-        logging.error(f"[{kernel}] Vol3 build failed : {e}")
+        logging.exception(f"[{kernel}] Vol3 build failed : {e}")
 
 
 @group.command()
@@ -48,7 +48,7 @@ def almalinux(kernel: str):
     try:
         main_almalinux(kernel)
     except Exception as e:
-        logging.error(f"[{kernel}] Vol3 build failed : {e}")
+        logging.exception(f"[{kernel}] Vol3 build failed : {e}")
 
 
 @group.command()
@@ -65,7 +65,7 @@ def rockylinux(kernel: str):
     try:
         main_rockylinux(kernel)
     except Exception as e:
-        logging.error(f"[{kernel}] Vol3 build failed : {e}")
+        logging.exception(f"[{kernel}] Vol3 build failed : {e}")
 
 
 if __name__ == "__main__":
