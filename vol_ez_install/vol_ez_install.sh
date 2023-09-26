@@ -32,7 +32,7 @@ vol2_install() {
     mkdir -p ~/vol2/
     mkdir -p ~/vol2/custom_plugins
     # Fetch Dockerfile
-    wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol2 -P ~/vol2/
+    wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol2 -O ~/vol2/Dockerfile-vol2
     # Build container
     docker build -t vol2_dck -f ~/vol2/Dockerfile-vol2 ~/vol2
     # Clone volatility2
@@ -52,7 +52,7 @@ vol3_install() {
     mkdir -p ~/vol3/
     mkdir -p ~/vol3/custom_plugins
     # Fetch Dockerfile
-    wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol3 -P ~/vol3/
+    wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol3 -O ~/vol3/Dockerfile-vol3
     # Build container
     docker build -t vol3_dck -f ~/vol3/Dockerfile-vol3 ~/vol3
     # Add volume for cache
