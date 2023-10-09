@@ -9,6 +9,6 @@ RUN wget https://github.com/volatilityfoundation/volatility3/raw/develop/require
 # 26/09/2023 : higher versions cannot compile with pip ("leechcorepyc.c:6:10: fatal error: leechcorepyc.h: No such file or directory")
 RUN sed -i 's/leechcorepyc>=2.4.0/leechcorepyc==2.15.1/g' /tmp/requirements.txt
 
-RUN pip3 install wheel jsonschema
+RUN pip3 install wheel
 
 RUN pip3 install -r /tmp/requirements.txt
