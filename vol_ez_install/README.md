@@ -7,10 +7,15 @@ One container for each volatility version will be setup. The volatility code wil
 
 Requirements :
 
-- `docker` 
-- `docker` "rootless" (https://docs.docker.com/engine/security/rootless/) : no need to run docker as root here*
+- `docker`, `sudo`, `git`
 
-Usage : `bash vol_ez_install.sh`
+(Non-standard) If you want to run docker as rootless, please run :
+
+```sh
+sed -i 's/sudo docker/docker/g' vol_ez_install.sh
+```
+
+Usage : `./vol_ez_install.sh`
 
 ```sh
 >>> Volatility easy install <<<
@@ -28,17 +33,15 @@ Example usage (from the docker host) :
 ```sh
 # vol2
 vol2d -f `wvol dump.raw` --profile [profile_name] pslist
+vol2d -f `wvol dump.raw` --profile [profile_name] procdump -D `wvol ./dump_dir/` -p [pid]
 
 # vol3
 vol3d -f `wvol dump.raw` windows.pslist
+vol3d -f `wvol dump.raw` -o `wvol ./dump_dir/` windows.dumpfiles --pid [pid]
 
 # Translates (without aliases) to :
 docker run --rm -v /:/bind/ vol2_dck python2 /bind/home/user/vol2/volatility2/vol.py -f /bind/home/user/dump.raw --profile [profile_name] pslist
-docker run --rm -v /:/bind/ vol3_dck python3 /bind/home/user/vol3/volatility3/vol.py -f /bind/home/user/dump.raw  windows.pslist
+docker run --rm -v /:/bind/ vol3_dck python3 /bind/home/user/vol3/volatility3/vol.py -f /bind/home/user/dump.raw pslist
 ```
 
 To reference files from your host inside the container, please use the ``` `wvol [file_you_want_the_container_to_access]` ``` syntax. Doing so, it translates to a path reachable by the container. It's basically a "readlink" command prefixed with the binded volume of the container.
-
-
-
-\* If you do not want to run docker as rootless, just edit the aliases in your "bashrc" or "zshrc" file and prefix the docker commands with "sudo".
