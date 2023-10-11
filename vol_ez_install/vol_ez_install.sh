@@ -34,12 +34,12 @@ vol2_install() {
     # Fetch Dockerfile
     wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol2 -O ~/vol2/Dockerfile-vol2
     # Build container
-    docker build -t vol2_dck -f ~/vol2/Dockerfile-vol2 ~/vol2
+    sudo docker build -t vol2_dck -f ~/vol2/Dockerfile-vol2 ~/vol2
     # Clone volatility2
     git clone https://github.com/volatilityfoundation/volatility.git ~/vol2/volatility2
     # Add aliases
     grep -q 'wvol' ~/.zshrc ~/.bashrc || add_rc 'wvol() { echo "/bind"$(readlink -f "$1"); }'
-    grep -q 'vol2d' ~/.zshrc ~/.bashrc || add_rc 'alias vol2d="docker run --rm -v /:/bind/ vol2_dck python2 $(wvol ~/vol2/volatility2/vol.py)"'
+    grep -q 'vol2d' ~/.zshrc ~/.bashrc || add_rc 'alias vol2d="sudo docker run --rm -v /:/bind/ vol2_dck python2 $(wvol ~/vol2/volatility2/vol.py)"'
 
     echo 'volatility2 setup completed !'
 }
@@ -54,14 +54,14 @@ vol3_install() {
     # Fetch Dockerfile
     wget https://github.com/Abyss-W4tcher/volatility-scripts/raw/master/vol_ez_install/Dockerfile-vol3 -O ~/vol3/Dockerfile-vol3
     # Build container
-    docker build -t vol3_dck -f ~/vol3/Dockerfile-vol3 ~/vol3
+    sudo docker build -t vol3_dck -f ~/vol3/Dockerfile-vol3 ~/vol3
     # Add volume for cache
-    docker volume create vol3-cache
+    sudo docker volume create vol3-cache
     # Clone volatility3
     git clone https://github.com/volatilityfoundation/volatility3.git ~/vol3/volatility3
     # Add aliases
     grep -q 'wvol' ~/.zshrc ~/.bashrc || add_rc 'wvol() { echo "/bind"$(readlink -f "$1"); }'
-    grep -q 'vol3d' ~/.zshrc ~/.bashrc || add_rc 'alias vol3d="docker run --rm -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/vol.py)"'
+    grep -q 'vol3d' ~/.zshrc ~/.bashrc || add_rc 'alias vol3d="sudo docker run --rm -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/vol.py)"'
 
     echo 'volatility3 setup completed !'
 
