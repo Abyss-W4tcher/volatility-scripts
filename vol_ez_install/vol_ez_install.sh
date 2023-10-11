@@ -69,11 +69,11 @@ vol3_install() {
 
 install=false
 for arg in "$@"; do
-    if [ "$arg" == "vol2_install" ]; then
+    if [ "$arg" = "vol2_install" ]; then
         vol2_install
         install=true
     fi
-    if [ "$arg" == "vol3_install" ]; then
+    if [ "$arg" = "vol3_install" ]; then
         vol3_install
         install=true
     fi
