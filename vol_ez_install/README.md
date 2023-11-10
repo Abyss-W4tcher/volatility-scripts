@@ -15,7 +15,7 @@ Requirements :
 sed -i 's/sudo docker/docker/g' vol_ez_install.sh
 ```
 
-Usage : `./vol_ez_install.sh`
+Usage : `./vol_ez_install.sh`, do not use sudo to run directly.
 
 ```sh
 >>> Volatility easy install <<<
