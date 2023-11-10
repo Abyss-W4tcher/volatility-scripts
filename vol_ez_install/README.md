@@ -31,6 +31,7 @@ Example usage, **from the docker host** :
 
 ```sh
 # vol2
+vol2d -f `wvol dump.raw` imageinfo
 vol2d -f `wvol dump.raw` --profile [profile_name] pslist
 vol2d -f `wvol dump.raw` --profile [profile_name] procdump -D `wvol ./dump_dir/` -p [pid]
 
