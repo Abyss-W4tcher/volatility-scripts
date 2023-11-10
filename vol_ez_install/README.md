@@ -40,4 +40,4 @@ vol3d -f "`wvol dump.raw`" windows.pslist
 vol3d -f "`wvol dump.raw`" -o "`wvol ./dump_dir/`" windows.dumpfiles --pid [pid]
 ```
 
-To reference files from your host inside the container, please use the ``` `wvol [file_you_want_the_container_to_access]` ``` syntax. Doing so, it translates to a path reachable by the container. It's basically a "readlink" command prefixed with the binded volume of the container.
+To reference files from your host inside the container, please use the ``` "`wvol [file_you_want_the_container_to_access]`" ``` syntax. Doing so, it translates to a path reachable by the container. It's basically a "readlink" command prefixed with the binded volume of the container.
