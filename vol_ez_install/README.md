@@ -25,10 +25,9 @@ vol2_local     Setup latest volatility2 github master on the system
 vol3_local     Setup latest volatility3 github master on the system
 ```
 
-The script adds two aliases to your bashrc/zshrc, for smaller commands and better docker experience.
+The script adds two aliases `vol2d` and `vol3d` to your bashrc/zshrc, for smaller commands and better docker experience.
 
-
-Example usage (from the docker host) :
+Example usage, **from the docker host** :
 
 ```sh
 # vol2
@@ -38,10 +37,6 @@ vol2d -f `wvol dump.raw` --profile [profile_name] procdump -D `wvol ./dump_dir/`
 # vol3
 vol3d -f `wvol dump.raw` windows.pslist
 vol3d -f `wvol dump.raw` -o `wvol ./dump_dir/` windows.dumpfiles --pid [pid]
-
-# Translates (without aliases) to :
-docker run --rm -v /:/bind/ vol2_dck python2 /bind/home/user/vol2/volatility2/vol.py -f /bind/home/user/dump.raw --profile [profile_name] pslist
-docker run --rm -v /:/bind/ vol3_dck python3 /bind/home/user/vol3/volatility3/vol.py -f /bind/home/user/dump.raw windows.pslist
 ```
 
 To reference files from your host inside the container, please use the ``` `wvol [file_you_want_the_container_to_access]` ``` syntax. Doing so, it translates to a path reachable by the container. It's basically a "readlink" command prefixed with the binded volume of the container.
