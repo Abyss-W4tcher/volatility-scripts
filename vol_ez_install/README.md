@@ -6,7 +6,7 @@ One container for each volatility version will be setup. The volatility code wil
 
 ## Setup
 
-Requirements :
+**Requirements :**
 
 - `docker`, `sudo`, `git`
 
