@@ -4,6 +4,7 @@ Bored of spending more time installing volatility than actually using it ? Here 
 
 One container for each volatility version will be setup. The volatility code will be **hosted directly on your host**, in the home directory ("\~/vol2" and "\~/vol3"). Containers will be able to access it via a binded mount.
 
+## Setup
 
 Requirements :
 
@@ -20,6 +21,8 @@ vol3_local     Setup latest volatility3 github master on the system
 ```
 
 The script adds two aliases `vol2d` and `vol3d` to your bashrc/zshrc, for smaller commands and better docker experience.
+
+## Usage
 
 Example usage, **from the docker host** :
 
