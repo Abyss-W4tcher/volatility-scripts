@@ -9,12 +9,6 @@ Requirements :
 
 - `docker`, `sudo`, `git`
 
-(Non-standard) If you want to run docker as rootless, please run :
-
-```sh
-sed -i 's/sudo docker/docker/g' vol_ez_install.sh
-```
-
 Usage : `./vol_ez_install.sh`, do not use sudo to run directly.
 
 ```sh
