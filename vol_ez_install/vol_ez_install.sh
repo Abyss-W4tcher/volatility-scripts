@@ -67,6 +67,11 @@ vol3_install() {
 
 }
 
+# A bit ugly, but straight to the point
+type docker &>/dev/null || { echo "Please install docker before proceeding"; exit 1; }
+type sudo &>/dev/null || { echo "Please install sudo before proceeding"; exit 1; }
+type git &>/dev/null || { echo "Please install git before proceeding"; exit 1; }
+
 install=false
 for arg in "$@"; do
     if [ "$arg" = "vol2_install" ]; then
