@@ -100,7 +100,7 @@ class Check_ftrace(interfaces.plugins.PluginInterface):
         self.vmlinux = self.context.modules[self.config["kernel"]]
         if not self.vmlinux.has_symbol("ftrace_ops_list"):
             raise exceptions.SymbolError(
-                "msgbufp",
+                "ftrace_ops_list",
                 self.vmlinux.symbol_table_name,
                 'The provided symbol table does not include the "ftrace_ops_list" symbol. This means you are either analyzing an unsupported kernel version or that your symbol table is corrupt.',
             )

@@ -66,7 +66,7 @@ class Check_tracepoints(interfaces.plugins.PluginInterface):
         self.vmlinux = self.context.modules[self.config["kernel"]]
         if not self.vmlinux.has_symbol("__start___tracepoints_ptrs"):
             raise exceptions.SymbolError(
-                "msgbufp",
+                "__start___tracepoints_ptrs",
                 self.vmlinux.symbol_table_name,
                 'The provided symbol table does not include the "__start___tracepoints_ptrs" symbol. This means you are either analyzing an unsupported kernel version or that your symbol table is corrupt.',
             )
