@@ -12,13 +12,9 @@ Get full notices in the dedicated subdirectories !
 
 Install Volatility on your system effortlessly using Docker, and benefit from command aliases that streamline the experience !
 
-### symbols_builder
+### Volatility_contest_2023
 
-Volatility3 symbols automatic generation :
-
-- Fedora
-- AlmaLinux
-- RockyLinux
+Volatility contest 2023 plugins and submission document.
 
 ---
 
