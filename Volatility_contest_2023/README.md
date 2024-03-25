@@ -16,7 +16,7 @@ Within the Linux kernel, a tracepoint provides a hooking mechanism to call a fun
 
 ## Usage
 
-Place the desired plugins in `volatility3/volatility3/plugins/linux/`. You may need to create the `linux/` directory, if it did not exist beforehand.  
+Place all three plugins in `volatility3/volatility3/plugins/linux/` (not under `framework/plugins/linux`). You may need to create the `linux/` directory, if it did not exist beforehand.  
 See `Abyss_Watcher_Volatility_contest_2023.pdf` for details and context.
 
 ## Results
