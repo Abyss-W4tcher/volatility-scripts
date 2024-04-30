@@ -62,6 +62,7 @@ vol3_install() {
     # Add aliases
     grep -q 'wvol' ~/.zshrc ~/.bashrc || add_rc 'wvol() { echo "/bind"$(printf "%q" "$(realpath ""$1"")"); }'
     grep -q 'vol3d' ~/.zshrc ~/.bashrc || add_rc 'alias vol3d="sudo docker run --rm -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/vol.py)"'
+    grep -q 'volshell3d' ~/.zshrc ~/.bashrc || add_rc 'alias volshell3d="sudo docker run --rm -it -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/volshell.py)"'
 
     echo 'volatility3 setup completed !'
 
