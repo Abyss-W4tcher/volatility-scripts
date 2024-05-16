@@ -4,7 +4,7 @@ RUN apk update
 
 RUN apk add python3 python3-dev py-pip snappy-dev make gcc capstone musl-dev linux-headers openssl-dev libusb-dev
 
-RUN wget https://github.com/volatilityfoundation/volatility3/raw/develop/requirements.txt -O /tmp/requirements.txt
+RUN wget https://github.com/volatilityfoundation/volatility3/raw/develop/requirements.txt -O /tmp/requirements.txt && wget https://github.com/volatilityfoundation/volatility3/raw/develop/requirements-minimal.txt -O /tmp/requirements-minimal.txt
 
 # 26/09/2023 : higher versions cannot compile with pip ("leechcorepyc.c:6:10: fatal error: leechcorepyc.h: No such file or directory")
 RUN sed -i 's/leechcorepyc>=2.4.0/leechcorepyc==2.15.1/g' /tmp/requirements.txt
