@@ -35,6 +35,9 @@ vol2d -f "`wvol dump.raw`" --profile [profile_name] procdump -D "`wvol ./dump_di
 # vol3
 vol3d -f "`wvol dump.raw`" windows.pslist
 vol3d -f "`wvol dump.raw`" -o "`wvol ./dump_dir/`" windows.dumpfiles --pid [pid]
+
+# vol3 volshell
+volshell3d -f "`wvol dump.raw`" -h
 ```
 
 To reference files of your host inside the container, please use the ``` "`wvol [file_you_want_the_container_to_access]`" ``` syntax. Doing so, it translates to a path reachable by the container.
