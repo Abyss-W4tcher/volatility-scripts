@@ -16,8 +16,8 @@ Usage : `./vol_ez_install.sh`, do not use sudo to run directly.
 >>> Volatility easy install <<<
 Syntax: vol_ez_install.sh [option(s)]
 options:
-vol2_local     Setup latest volatility2 github master on the system
-vol3_local     Setup latest volatility3 github master on the system
+vol2_install     Setup latest volatility2 github master on the system
+vol3_install     Setup latest volatility3 github master on the system
 ```
 
 The script adds two aliases `vol2d` and `vol3d` to your bashrc/zshrc, for smaller commands and better docker experience.
