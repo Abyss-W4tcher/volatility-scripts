@@ -25,7 +25,7 @@ MAX_KERNEL_MEMORY_SEARCH_LIMIT = 2**20  # Arbitrary constant
 class Check_unlinked_modules(interfaces.plugins.PluginInterface):
     """Scan memory for unlinked modules"""
 
-    _version = (1, 0, 0)
+    _version = (1, 0, 1)
     _required_framework_version = (2, 5, 2)
 
     @classmethod
@@ -246,7 +246,7 @@ def regex_from_struct_members(
         elif object_class == Enumeration:
             choices = []
             for choice in obj.vol.choices.values():
-                choices.append(int.to_bytes(choice, member_len, "little"))
+                choices.append(int.to_bytes(choice, member_len, "little", signed=True))
             round_regex = b"(?:" + b"|".join(choices) + b")"
         elif object_class == Boolean:
             possible_values = []
