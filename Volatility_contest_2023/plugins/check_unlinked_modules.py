@@ -34,7 +34,7 @@ class Check_unlinked_modules(interfaces.plugins.PluginInterface):
             requirements.ModuleRequirement(
                 name="kernel",
                 description="Linux kernel",
-                architectures=["Intel32", "Intel64", "AArch64"],
+                architectures=["Intel32", "Intel64"],
             ),
             requirements.PluginRequirement(
                 name="check_modules",
