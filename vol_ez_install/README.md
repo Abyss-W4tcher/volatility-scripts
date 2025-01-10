@@ -4,6 +4,10 @@ Bored of spending more time installing volatility than actually using it ? Here 
 
 One container for each volatility version will be setup. The volatility code will be **hosted directly on your host**, in the home directory ("\~/vol2" and "\~/vol3"). Containers will be able to access it via a binded mount.
 
+## Disclaimer
+
+The use of a dockerized setup for Volatility3 is not worth the Docker overhead, as Volatility3 dependencies integrate well with recent systems. It is still available for specific scenarios however.
+
 ## Setup
 
 **Requirements :**

@@ -38,8 +38,8 @@ vol2_install() {
     # Clone volatility2
     git clone https://github.com/volatilityfoundation/volatility.git ~/vol2/volatility2
     # Add aliases
-    grep -q 'wvol' ~/.zshrc ~/.bashrc || add_rc 'wvol() { echo "/bind"$(printf "%q" "$(realpath ""$1"")"); }'
-    grep -q 'vol2d' ~/.zshrc ~/.bashrc || add_rc 'alias vol2d="sudo docker run --rm -v /:/bind/ vol2_dck python2 $(wvol ~/vol2/volatility2/vol.py)"'
+    grep -q 'wvol' ~/.zshrc ~/.bashrc &>/dev/null || add_rc 'wvol() { echo "/bind"$(printf "%q" "$(realpath ""$1"")"); }'
+    grep -q 'vol2d' ~/.zshrc ~/.bashrc &>/dev/null || add_rc 'alias vol2d="sudo docker run --rm -v /:/bind/ vol2_dck python2 $(wvol ~/vol2/volatility2/vol.py)"'
 
     echo 'volatility2 setup completed !'
 }
@@ -58,20 +58,20 @@ vol3_install() {
     # Add volume for cache
     sudo docker volume create vol3-cache
     # Clone volatility3
-    git clone https://github.com/volatilityfoundation/volatility3.git ~/vol3/volatility3
+    git clone https://github.com/volatilityfoundation/volatility3.git ~/vol3/volatility3 || (echo "Running git pull in ~/vol3/volatility3..." && cd ~/vol3/volatility3 && git pull)
     # Add aliases
-    grep -q 'wvol' ~/.zshrc ~/.bashrc || add_rc 'wvol() { echo "/bind"$(printf "%q" "$(realpath ""$1"")"); }'
-    grep -q 'vol3d' ~/.zshrc ~/.bashrc || add_rc 'alias vol3d="sudo docker run --rm -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/vol.py)"'
-    grep -q 'volshell3d' ~/.zshrc ~/.bashrc || add_rc 'alias volshell3d="sudo docker run --rm -it -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/volshell.py)"'
+    grep -q 'wvol' ~/.zshrc ~/.bashrc &>/dev/null || add_rc 'wvol() { echo "/bind"$(printf "%q" "$(realpath ""$1"")"); }'
+    grep -q 'vol3d' ~/.zshrc ~/.bashrc &>/dev/null || add_rc 'alias vol3d="sudo docker run --rm -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/vol.py)"'
+    grep -q 'volshell3d' ~/.zshrc ~/.bashrc &>/dev/null || add_rc 'alias volshell3d="sudo docker run --rm -it -v vol3-cache:/root/.cache/volatility3/ -v /:/bind/ vol3_dck python3 $(wvol ~/vol3/volatility3/volshell.py)"'
 
     echo 'volatility3 setup completed !'
 
 }
 
-# A bit ugly, but straight to the point
-type docker &>/dev/null || { echo "Please install docker before proceeding"; exit 1; }
-type sudo &>/dev/null || { echo "Please install sudo before proceeding"; exit 1; }
-type git &>/dev/null || { echo "Please install git before proceeding"; exit 1; }
+for cmd in docker sudo git wget; do
+    type $cmd &>/dev/null || { echo "Please install $cmd before proceeding"; exit 1; }
+done
+
 
 install=false
 for arg in "$@"; do
@@ -90,3 +90,8 @@ if [ "$install" = true ]; then
 else
     Help
 fi
+
+# Testing:
+# docker run --rm -it -v "${DOCKER_HOST#unix://}":/var/run/docker.sock -v $(pwd):/vol_dock ubuntu:latest bash
+# apt update && apt install -y wget sudo docker.io
+# cd /vol_dock/vol_ez_install/ && ./vol_ez_install.sh vol3_install
